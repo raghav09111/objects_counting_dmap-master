@@ -25,6 +25,7 @@ from scipy.ndimage import gaussian_filter
 @click.option('--dataset',
               type=click.Choice(['cell', 'shrimp', 'ucsd']),
               required=True)
+
 def get_data(dataset: str):
     """
     Get chosen dataset and generate HDF5 files with training
@@ -200,7 +201,7 @@ def generate_shrimp_data():
 
     # load labels infomation from provided MATLAB file
     # it is a numpy array with (x, y) objects position for subsequent frames
-    labels = loadmat('shrimpdataset/shrimpdone.mat')['frame'][0]
+    labels = loadmat('shrimpdone.mat')['frame'][0]
 
     def fill_h5(h5, labels, init_frame=0):
         """
@@ -213,7 +214,7 @@ def generate_shrimp_data():
         """
         for i, label in enumerate(labels, init_frame):
             # path to the next frame (filename convention: shrimpx.jpg)
-            img_path = f"shrimpdataset/frames/shrimp{str(i+1)}.jpg"
+            img_path = f"frames/shrimp{str(i+1)}.jpg"
 
             # get an image as numpy array
             image = np.array(Image.open(img_path), dtype=np.float32) / 255
@@ -235,7 +236,7 @@ def generate_shrimp_data():
     valid_h5.close()
 
     # cleanup
-    shutil.rmtree('shrimpdataset')
+    # shutil.rmtree('shrimpdataset')
 
 
 def generate_cell_data():
