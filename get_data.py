@@ -3,7 +3,7 @@
 Available datasets:
 
     * cell: http://www.robots.ox.ac.uk/~vgg/research/counting/index_org.html
-    * shrimp: https://mega.nz/file/IhAzwDBY#IR1jrOqJ_ItLvLo0OMDAP6dtmMviFRKM1_wi-kxy-D0
+    * shrimp: https://tuc.cloud/index.php/s/ZTB4WpfJH9meMJb
     * ucsd: http://www.svcl.ucsd.edu/projects/peoplecnt/
 """
 import os
@@ -189,7 +189,7 @@ def generate_shrimp_data():
     """Generate HDF5 files for mall dataset."""
     # download and extract dataset
     get_and_unzip(
-        'https://mega.nz/file/IhAzwDBY#IR1jrOqJ_ItLvLo0OMDAP6dtmMviFRKM1_wi-kxy-D0'
+        'https://tuc.cloud/index.php/s/ZTB4WpfJH9meMJb'
     )
     # create training and validation HDF5 files
     train_h5, valid_h5 = create_hdf5('shrimp',
