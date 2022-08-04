@@ -3,7 +3,7 @@
 Available datasets:
 
     * cell: http://www.robots.ox.ac.uk/~vgg/research/counting/index_org.html
-    * shrimp: https://mega.nz/file/V8pRQBLA#_MMNBcO-b6dZJc4wC5OzoATQgGGp50Z3mu0VkGcGdcY
+    * shrimp: https://mega.nz/file/IhAzwDBY#IR1jrOqJ_ItLvLo0OMDAP6dtmMviFRKM1_wi-kxy-D0
     * ucsd: http://www.svcl.ucsd.edu/projects/peoplecnt/
 """
 import os
@@ -189,12 +189,12 @@ def generate_shrimp_data():
     """Generate HDF5 files for mall dataset."""
     # download and extract dataset
     get_and_unzip(
-        'https://mega.nz/file/V8pRQBLA#_MMNBcO-b6dZJc4wC5OzoATQgGGp50Z3mu0VkGcGdcY'
+        'https://mega.nz/file/IhAzwDBY#IR1jrOqJ_ItLvLo0OMDAP6dtmMviFRKM1_wi-kxy-D0'
     )
     # create training and validation HDF5 files
     train_h5, valid_h5 = create_hdf5('shrimp',
-                                     train_size=5,
-                                     valid_size=5,
+                                     train_size=3,
+                                     valid_size=2,
                                      img_size=(544, 960),
                                      in_channels=3)
 
@@ -212,8 +212,8 @@ def generate_shrimp_data():
             init_frame: the first frame in given list of labels
         """
         for i, label in enumerate(labels, init_frame):
-            # path to the next frame (filename convention: seq_XXXXXX.jpg)
-            img_path = f"shrimpdataset/frames/seq_{str(i+1).zfill(6)}.jpg"
+            # path to the next frame (filename convention: shrimpx.jpg)
+            img_path = f"shrimpdataset/frames/shrimp{str(i+1)}.jpg"
 
             # get an image as numpy array
             image = np.array(Image.open(img_path), dtype=np.float32) / 255
@@ -226,9 +226,9 @@ def generate_shrimp_data():
             h5['images'][i - init_frame] = image
             h5['labels'][i - init_frame, 0] = label
 
-    # use first 1500 frames for training and the last 500 for validation
-    fill_h5(train_h5, labels[:1500])
-    fill_h5(valid_h5, labels[1500:], 1500)
+    # use first 3 frames for training and the last 2 for validation
+    fill_h5(train_h5, labels[:3])
+    fill_h5(valid_h5, labels[3:], 3)
 
     # close HDF5 file
     train_h5.close()
