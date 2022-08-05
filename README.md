@@ -9,7 +9,7 @@ More details about the method can be found in [our blog post](https://neurosys.c
 Three datasets are considered:
 
 * `cell`: [Fluorescent cells dataset](http://www.robots.ox.ac.uk/~vgg/research/counting/index_org.html)
-* `mall`: [Mall dataset](http://personal.ie.cuhk.edu.hk/~ccloy/downloads_mall_dataset.html)
+* `shrimp`: [shrimp dataset](https://tuc.cloud/index.php/s/ZTB4WpfJH9meMJb/download/shrimpdataset.zip)
 * `ucsd`: [UCSD pedestrians dataset](http://www.svcl.ucsd.edu/projects/peoplecnt/)
 
 One can get them using `get_data.py` script:
@@ -20,7 +20,7 @@ Usage: get_data.py [OPTIONS]
   Get chosen dataset and generate HDF5 files with training and validation samples.
 
 Options:
-  --dataset [cell|mall|ucsd]  [required]
+  --dataset [cell|shrimp|ucsd]  [required]
   --help                      Show this message and exit.
 ```
 
@@ -46,7 +46,7 @@ Usage: train.py [OPTIONS]
   Train chosen model on selected dataset.
 
 Options:
-  -d, --dataset_name [cell|mall|ucsd]
+  -d, --dataset_name [cell|shrimp|ucsd]
                                   Dataset to train model on (expect proper
                                   HDF5 files).  [required]
   -n, --network_architecture [UNet|FCRN_A]
@@ -107,7 +107,7 @@ The number of objects found: 134.857265625
 ![](examples/example_cell.png)
 
 ```
-python infer.py -n UNet -c mall_UNet.pth -i ../data/mall_dataset/frames/seq_000001.jpg --visualize                                    
+python infer.py -n UNet -c shrimp_UNet.pth -i ../data/shrimp_dataset/frames/seq_000001.jpg --visualize                                    
 The number of objects found: 30.82901123046875
 ```
 
