@@ -24,7 +24,7 @@ from model import UNet, FCRN_A
 @click.option('-lr', '--learning_rate', default=1e-2,
               help='Initial learning rate (lr_scheduler is applied).')
 @click.option('-e', '--epochs', default=150, help='Number of training epochs.')
-@click.option('--batch_size', default=8,
+@click.option('--batch_size', default=4,
               help='Batch size for both training and validation dataloaders.')
 @click.option('-hf', '--horizontal_flip', default=0.0,
               help='The probability of horizontal flip for training dataset.')
