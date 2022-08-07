@@ -194,8 +194,8 @@ def generate_shrimp_data():
     )
     # create training and validation HDF5 files
     train_h5, valid_h5 = create_hdf5('shrimp',
-                                     train_size=85,
-                                     valid_size=24,
+                                     train_size=60,
+                                     valid_size=23,
                                      img_size=(544, 960),
                                      in_channels=3)
 
@@ -228,8 +228,8 @@ def generate_shrimp_data():
             h5['labels'][i - init_frame, 0] = label
 
     # use first 3 frames for training and the last 2 for validation
-    fill_h5(train_h5, labels[:85])
-    fill_h5(valid_h5, labels[85:], 85)
+    fill_h5(train_h5, labels[:60])
+    fill_h5(valid_h5, labels[60:], 60)
 
     # close HDF5 file
     train_h5.close()
