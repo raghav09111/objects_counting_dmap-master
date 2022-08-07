@@ -66,9 +66,9 @@ def run_batch(flip):
     """Sanity check for HDF5 dataloader checks for shapes and empty arrays."""
     # datasets to test loader on
     datasets = {
-        'cell': (3, 256, 256),
-        'mall': (3, 480, 640),
-        'ucsd': (1, 160, 240)
+        'cell':   (3, 256, 256),
+        'shrimp': (3, 544, 960),
+        'ucsd':   (1, 160, 240)
     }
 
     # for each dataset check both training and validation HDF5
