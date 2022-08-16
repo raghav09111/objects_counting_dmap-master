@@ -1,3 +1,4 @@
+"""A tool to download and preprocess data, and generate HDF5 file."""
 """A tool to download and preprocess data, and generate HDF5 file.
 
 Available datasets:
